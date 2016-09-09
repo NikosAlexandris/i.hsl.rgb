@@ -13,8 +13,11 @@
  *              Public License (>=v2). Read the COPYING file that
  *              comes with GRASS for details.
  *
- * NOTES:       Reused base code from i.his.rgb
+ * NOTES:       - Reused base code from i.his.rgb and parts from a diff submitted
+ *              in GRASS-GIS' trac ticket #774
  *              Adapted from https://en.wikipedia.org/wiki/HSL_and_HSV#From_HSL
+ *              - Adapted from https://en.wikipedia.org/wiki/HSL_and_HSV#From_HSL
+ *              - Also consulted http://dystopiancode.blogspot.ch/2012/06/hsl-rgb-conversion-algorithms-in-c.html
  *
  *****************************************************************************/
 
