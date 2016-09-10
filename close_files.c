@@ -7,14 +7,14 @@
    use a less than perfect way of setting the color maps for the output
    to grey scale.  */
 
-/* 
+/*
  * free allocated memory (row buffers),
  * close raster maps
  * set color table for output maps to grey scale.
  */
 
 int close_files(char *red, char *green, char *blue,
-	       int fd_output[3], DCELL * rowbuffer[3])
+                int fd_output[3], DCELL * rowbuffer[3])
 {
     int row;
     struct Colors colors;
@@ -25,8 +25,8 @@ int close_files(char *red, char *green, char *blue,
 
     /* free allocated memory, close raster maps */
     for (row = 0; row < 3; row++) {
-        G_free(rowbuffer[row]);
-        Rast_close(fd_output[row]);
+         G_free(rowbuffer[row]);
+         Rast_close(fd_output[row]);
     }
 
     mapset = G_mapset();

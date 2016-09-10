@@ -11,10 +11,10 @@
  * (input/output?) rowbuffers
  */
 
-void open_files(char *hue, char *saturation, char *lightness, 
-               char *red, char *green, char *blue,
-               int fd_input[3], int fd_output[3],
-               DCELL * rowbuffer[3])
+void open_files(char *hue, char *saturation, char *lightness,
+                char *red, char *green, char *blue,
+                int fd_input[3], int fd_output[3],
+                DCELL * rowbuffer[3])
 {
     /* open output files */
     fd_output[0] = Rast_open_fp_new(red);

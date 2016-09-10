@@ -1,7 +1,7 @@
 /*
  * PURPOSE      Convert hue, saturation and lightness properties of the HSL
- *                color space model to red, green and blue of the RGB color space
- *               model
+ *              color space model to red, green and blue of the RGB color space
+ *              model
  */
 
 #include <grass/gis.h>
@@ -10,17 +10,17 @@
 
 void hsl_to_rgb(DCELL *rowbuffer[3], int columns, double max_colors)
 {
-    long column;		/* column indicator                          */
-    double red;			/* the red band output                       */
-    double green;		/* the green band output                     */
-    double blue;		/* the blue band output                      */
-    double chroma;		/* value used for determining RGB            */
-    double intermediate;/* value used for determining RGB            */
-    double baseline_rgb;/* value used for determining RGB            */
-    double lightness;	/* lightness value                           */
-    double saturation;	/* saturation value                          */
-    double hue;			/* hue                                       */
-    double hue60;		/* hue                                       */
+    long column;            // column indicator
+    double red;             // the red band output
+    double green;           // the green band output
+    double blue;            // the blue band output
+    double chroma;          // value used for determining RGB
+    double intermediate;    // value used for determining RGB
+    double baseline_rgb;    // value used for determining RGB
+    double lightness;       // lightness value
+    double saturation;      // saturation value
+    double hue;             // hue
+    double hue60;           // hue
 
     /* loop over columns and appropriately set NULLs */
     for (column = 0; column < columns; column++) {
@@ -38,7 +38,8 @@ void hsl_to_rgb(DCELL *rowbuffer[3], int columns, double max_colors)
     hue = rowbuffer[0][column];
     saturation = rowbuffer[1][column];
     lightness = rowbuffer[2][column];
-    G_debug(2, "Input Hue, Saturation, Lightness: %f, %f, %f", hue, saturation, lightness);
+    G_debug(2, "Input Hue, Saturation, Lightness: %f, %f, %f",
+            hue, saturation, lightness);
 
     /* chroma, hue/60, intermediate `x`, baseline RGB */
     chroma = (1.0 - fabs(2.0*lightness - 1.0)) * saturation;
@@ -95,7 +96,7 @@ void hsl_to_rgb(DCELL *rowbuffer[3], int columns, double max_colors)
         red = green = blue = 0.0;
     }
 
-    /* add baseline RGB value*/
+    /* add baseline RGB value */
     red += baseline_rgb;
     green += baseline_rgb;
     blue += baseline_rgb;
@@ -105,7 +106,8 @@ void hsl_to_rgb(DCELL *rowbuffer[3], int columns, double max_colors)
     red *= max_colors;
     green *= max_colors;
     blue *= max_colors;
-    G_debug(2, "Red, Green, Blue [scaled up to]: %f, %f, %f, [%.0f]", red, green, blue, max_colors);
+    G_debug(2, "Red, Green, Blue [scaled up to]: %f, %f, %f, [%.0f]",
+            red, green, blue, max_colors);
 
     /* place output row into corresponding buffer */
     rowbuffer[0][column] = (DCELL) red;

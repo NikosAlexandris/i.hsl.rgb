@@ -42,12 +42,12 @@ int main(int argc, char **argv)
     struct Option *opt_red;
     struct Option *opt_green;
     struct Option *opt_blue;
-    struct Option *opt_bits;    /* bits per input image, as in bits per channel */
+    struct Option *opt_bits;    // bits per input image, as in bits per channel
     struct GModule *module;
     int fd_input[3];
     int fd_output[3];
     int bits;
-    double max_colors;          /* maximum number of colors */
+    double max_colors;          // maximum number of colors
 
     G_gisinit(argv[0]);
 
@@ -115,24 +115,23 @@ int main(int argc, char **argv)
 
     /* open input and output files */
     open_files(opt_hue->answer,  opt_saturation->answer, opt_lightness->answer,
-              opt_red->answer, opt_green->answer, opt_blue->answer,
-              fd_input, fd_output, rowbuffer);
+               opt_red->answer, opt_green->answer, opt_blue->answer,
+               fd_input, fd_output, rowbuffer);
 
     /* loop over hue, saturation and lightness color space properties */
     for (row = 0; row < rows; row++) {
-        int property;
-
+         int property;
 
         /* read in row from each cell map */
         for (property = 0; property < 3; property++)
-            Rast_get_d_row(fd_input[property], rowbuffer[property], row);
+             Rast_get_d_row(fd_input[property], rowbuffer[property], row);
 
             /* process row of image */
             hsl_to_rgb(rowbuffer, cols, max_colors);
 
         /* write out the new row for each cell map */
         for (property = 0; property < 3; property++)
-            Rast_put_row(fd_output[property], rowbuffer[property], DCELL_TYPE);
+             Rast_put_row(fd_output[property], rowbuffer[property], DCELL_TYPE);
     }
 
     /* progress */
@@ -140,7 +139,7 @@ int main(int argc, char **argv)
 
     /* close output files */
     close_files(opt_red->answer, opt_green->answer, opt_blue->answer,
-               fd_output, rowbuffer);
+                fd_output, rowbuffer);
 
     exit(EXIT_SUCCESS);
 }
