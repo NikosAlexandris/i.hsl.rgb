@@ -15,8 +15,13 @@ void open_files(char *, char *, char *,
                 int[3], int[3],
                 DCELL *[3]);
 
-/* hsl_to_rgb.c */
-void hsl_to_rgb(DCELL *[3], int, double);
+/*
+ * hsl_to_rgb.c
+ * rowbuffer
+ * columns
+ * maximum number of colors
+ */
+void hsl_to_rgb(DCELL *[3], unsigned int, unsigned int);
 
 /*
  * close_files.c
