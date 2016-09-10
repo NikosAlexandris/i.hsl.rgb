@@ -8,9 +8,9 @@
 #include "globals.h"
 #include <math.h>
 
-void hsl_to_rgb(DCELL *rowbuffer[3], int columns, double max_colors)
+void hsl_to_rgb(DCELL *rowbuffer[3], unsigned int columns, unsigned int max_colors)
 {
-    long column;            // column indicator
+    unsigned long column;   // column indicator
     double red;             // the red band output
     double green;           // the green band output
     double blue;            // the blue band output
@@ -106,7 +106,7 @@ void hsl_to_rgb(DCELL *rowbuffer[3], int columns, double max_colors)
     red *= max_colors;
     green *= max_colors;
     blue *= max_colors;
-    G_debug(2, "Red, Green, Blue [scaled up to]: %f, %f, %f, [%.0f]",
+    G_debug(2, "Red, Green, Blue [scaled up to]: %f, %f, %f, [%.d]",
             red, green, blue, max_colors);
 
     /* place output row into corresponding buffer */
