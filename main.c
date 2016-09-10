@@ -33,8 +33,8 @@
 int main(int argc, char **argv)
 {
 
-    long row;
-    int rows, cols;
+    unsigned long row;
+    unsigned int rows, cols;
     DCELL *rowbuffer[3];
     struct Option *opt_hue;
     struct Option *opt_saturation;
@@ -46,8 +46,8 @@ int main(int argc, char **argv)
     struct GModule *module;
     int fd_input[3];
     int fd_output[3];
-    int bits;
-    double max_colors;          // maximum number of colors
+    unsigned int bits;
+    unsigned int max_colors;          // maximum number of colors
 
     G_gisinit(argv[0]);
 
@@ -106,8 +106,8 @@ int main(int argc, char **argv)
         G_fatal_error(_("Invalid bit depth definition!"));
 
     /* open half ended range for maximum number of colors */
-    max_colors = pow(2, bits) - 1.0;
-    G_debug(1, "%d-bit data ranging in [0,%.0f)", bits, max_colors);
+    max_colors = pow(2, bits) - 1;
+    G_debug(1, "%d-bit data ranging in [0,%.0d)", bits, max_colors);
 
     /* get image dimensions */
     rows = Rast_window_rows();
