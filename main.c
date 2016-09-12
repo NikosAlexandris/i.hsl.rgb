@@ -44,10 +44,10 @@ int main(int argc, char **argv)
     struct Option *opt_blue;
     struct Option *opt_bits;    // bits per input image, as in bits per channel
     struct GModule *module;
-    int fd_input[3];
-    int fd_output[3];
     unsigned int bits;
     unsigned int max_colors;          // maximum number of colors
+    int fd_input[3];
+    int fd_output[3];
 
     G_gisinit(argv[0]);
 
